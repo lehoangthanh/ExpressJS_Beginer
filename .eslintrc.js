@@ -5,9 +5,11 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["eslint:recommended", "prettier"],
+  extends: ['eslint:recommended', 'prettier', 'airbnb'],
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 'latest',
   },
-  rules: {},
-};
+  rules: {
+    'prettier/prettier': ['error'],
+  },
+}
