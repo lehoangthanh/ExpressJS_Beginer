@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser')
 const app = express()
 app.get('/', (req, res) => {
   res.json({ date: new Date() })
-  console.log('aaaa')
+  console.log('aaaa');
 })
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
