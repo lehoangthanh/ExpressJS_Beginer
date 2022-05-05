@@ -5,13 +5,19 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 
 const deviceRouter = require('@routes/devices')
+const userRouter = require('@routes/users')
 
-mongoose.connect('mongodb://localhost/devices')
+// mongoose.connect('mongodb://localhost/devices')
+
+mongoose.connect(process.env.BASE_URL, () => {
+	console.log('Connected to MongoDB')
+})
 
 const app = express()
 const apiRouteName = '/v1/api'
 
 app.use(`${apiRouteName}/devices`, deviceRouter)
+app.use(`${apiRouteName}/users`, userRouter)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
