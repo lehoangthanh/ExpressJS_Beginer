@@ -2,8 +2,11 @@ require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
+const mongoose = require('mongoose')
 
 const deviceRouter = require('@routes/devices')
+
+mongoose.connect('mongodb://localhost/devices')
 
 const app = express()
 const apiRouteName = '/v1/api'
