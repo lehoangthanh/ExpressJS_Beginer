@@ -37,11 +37,11 @@
     "prettier": "^2.6.2"
   },
   "lint-staged": {
-    "{src|test}/**/*.js": [
+    "src|test/**/*.js": [
       "npm run lint",
       "git add"
     ],
-    "*.js": "eslint --cache --fix"
+    "*.js": "eslint"
   },
   "_moduleAliases": {
     "@root": ".",
