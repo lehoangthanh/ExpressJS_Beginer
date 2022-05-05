@@ -4,7 +4,7 @@ const app = require("@app")
 const http = require("http")
 
 const port = process.env.PORT || 8000
-console.log
+
 const server = http.createServer(app)
 
 // Listen on provided port, on all network interfaces.

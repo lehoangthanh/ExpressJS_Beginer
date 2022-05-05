@@ -9,6 +9,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
+  ignorePatterns: ['bin/*'],
   // plugins: ['eslint-plugin-prettier'],
   // rules: {
   //   'prettier/prettier': ['error'],

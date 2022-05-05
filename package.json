@@ -4,11 +4,12 @@
   "description": "",
   "name": "expressjs_beginer",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "./bin/www.js",
   "scripts": {
-    "start": "nodemon ./bin/www --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d dist",
+    "start": "nodemon ./bin/www.js --exec babel-node",
+    "start:dev": "npm run build && nodemon dist/bin/www.js",
+    "build": "babel ./bin/www.js -d dist",
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
@@ -19,7 +20,8 @@
     "dotenv": "^16.0.0",
     "express": "^4.18.0",
     "lodash": "^4.17.21",
-    "module-alias": "^2.2.2"
+    "module-alias": "^2.2.2",
+    "npm-run-all": "^4.1.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",

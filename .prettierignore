@@ -1,3 +1,4 @@
 .history
 **/.git
 **/node_modules
+bin/*
