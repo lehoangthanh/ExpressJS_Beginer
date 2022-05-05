@@ -10,9 +10,8 @@ module.exports = {
 		ecmaVersion: 'latest',
 	},
 	ignorePatterns: ['bin/*', 'test/*'],
-	// plugins: ['eslint-plugin-prettier'],
 	rules: {
-		// 'prettier/prettier': ['error'],
+		'prettier/prettier': ['error'],
 		'import/no-unresolved': 0,
 		'import/extensions': 0,
 		'class-methods-use-this': 0,

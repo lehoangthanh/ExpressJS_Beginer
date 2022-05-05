@@ -1,5 +1,5 @@
 class DeviceController {
-	get(res) {
+	get(req, res) {
 		res.json({
 			date: new Date(),
 		})

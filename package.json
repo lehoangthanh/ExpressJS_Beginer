@@ -6,8 +6,7 @@
 	"version": "1.0.0",
 	"main": "./bin/www.js",
 	"scripts": {
-		"test": "mocha --require js:babel-core/register -r \"./src/**/*.spec.js*\"",
-		"start:dev": "nodemon ./bin/www.js --exec babel-node",
+		"test": "mocha --require @babel/register",
 		"start": "npm run build && nodemon dist/bin/www.js",
 		"build": "babel ./bin/www.js -d dist",
 		"format:check": "prettier --check .",
@@ -29,6 +28,7 @@
 		"@babel/core": "^7.17.10",
 		"@babel/node": "^7.17.10",
 		"@babel/preset-env": "^7.17.10",
+		"@babel/register": "^7.17.7",
 		"chai": "^4.3.6",
 		"chai-http": "^4.3.0",
 		"eslint": "^8.14.0",
