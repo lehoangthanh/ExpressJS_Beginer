@@ -9,9 +9,11 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  ignorePatterns: ['bin/*'],
+  ignorePatterns: ['bin/*', 'test/*'],
   // plugins: ['eslint-plugin-prettier'],
-  // rules: {
-  //   'prettier/prettier': ['error'],
-  // },
+  rules: {
+    // 'prettier/prettier': ['error'],
+    'import/no-unresolved': 0,
+    'import/extensions': 0,
+  },
 }

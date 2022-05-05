@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "main": "./bin/www.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-core/register -r \"./src/**/*.spec.js*\"",
     "start:dev": "nodemon ./bin/www.js --exec babel-node",
     "start": "npm run build && nodemon dist/bin/www.js",
     "build": "babel ./bin/www.js -d dist",
@@ -28,6 +28,8 @@
     "@babel/core": "^7.17.10",
     "@babel/node": "^7.17.10",
     "@babel/preset-env": "^7.17.10",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
@@ -35,11 +37,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.0",
     "lint-staged": "^12.4.1",
+    "mocha": "^10.0.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.2"
   },
   "lint-staged": {
-    "src|test/**/*.js": [
+    "src|tests/**/*.js": [
       "npm run lint"
     ],
     "*.js": "eslint"
@@ -48,6 +51,7 @@
     "@root": ".",
     "@deep": "src/some/very/deep/directory/or/file",
     "@app": "./app.js",
-    "something": "src/foo"
+    "@routes": "src/routes",
+    "@controllers": "src/controllers"
   }
 }
