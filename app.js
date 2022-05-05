@@ -7,6 +7,7 @@ const app = express()
 app.get('/', (req, res) => {
   res.json({ date: new Date() })
 })
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const app = require("../app")
+require('module-alias/register')
+const app = require("@app")
 const http = require("http")
 
 const port = process.env.PORT || 8000

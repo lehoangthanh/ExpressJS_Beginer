@@ -46,7 +46,7 @@
   "_moduleAliases": {
     "@root": ".",
     "@deep": "src/some/very/deep/directory/or/file",
-    "@my_module": "lib/some-file.js",
+    "@app": "./app.js",
     "something": "src/foo"
   }
 }
