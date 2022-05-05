@@ -5,12 +5,12 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['airbnb', 'eslint:recommended', 'prettier'],
+  extends: ['airbnb-base', 'plugin:prettier/recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  plugins: ['eslint-plugin-prettier'],
-  rules: {
-    'prettier/prettier': ['error'],
-  },
+  // plugins: ['eslint-plugin-prettier'],
+  // rules: {
+  //   'prettier/prettier': ['error'],
+  // },
 }
