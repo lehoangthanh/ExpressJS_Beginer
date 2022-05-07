@@ -3,10 +3,9 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
-
 const deviceRouter = require('@routes/devices')
 const userRouter = require('@routes/users')
-
+const bodyParser = require('body-parser')
 // mongoose.connect('mongodb://localhost/devices')
 
 mongoose.connect(process.env.BASE_URL, () => {
@@ -15,6 +14,8 @@ mongoose.connect(process.env.BASE_URL, () => {
 
 const app = express()
 const apiRouteName = '/v1/api'
+
+app.use(bodyParser.json())
 
 app.use(`${apiRouteName}/devices`, deviceRouter)
 app.use(`${apiRouteName}/users`, userRouter)
