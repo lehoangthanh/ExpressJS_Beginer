@@ -3,7 +3,15 @@ const { User } = require('../models/usersModel')
 const userController = {
 	addUser: async (req, res) => {
 		try {
-			const newUser = new User(req.body)
+			const newUser = new User({
+				firstName: req.body.firstName,
+				lastName: req.body.lastName,
+				age: req.body.age,
+				address: req.body.address,
+				gender: req.body.gender,
+				email: req.body.email,
+				avartar: req.file.path,
+			})
 			const savedUser = await newUser.save()
 			res.status(200).json(savedUser)
 		} catch (error) {
