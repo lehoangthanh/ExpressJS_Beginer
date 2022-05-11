@@ -1,7 +1,8 @@
 const router = require('express').Router()
 const userController = require('@controllers/usersController')
+const upload = require('../multer/upload')
 
-router.post('/', userController.addUser)
+router.post('/', upload.array('avartar'), userController.addUser)
 
 router.get('/', userController.userList)
 
