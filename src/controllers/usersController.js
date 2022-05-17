@@ -1,8 +1,10 @@
-const { User } = require('../models/usersModel')
+const { User } = require('@models/usersModel')
+const UsersService = require('@services/usersService')
 
 const userController = {
 	addUser: async (req, res) => {
 		try {
+			const fileName = await UsersService.uploadAvatar(req.file)
 			const newUser = new User({
 				firstName: req.body.firstName,
 				lastName: req.body.lastName,
@@ -10,9 +12,10 @@ const userController = {
 				address: req.body.address,
 				gender: req.body.gender,
 				email: req.body.email,
-				avartar: req.file.path,
+				avatar: fileName,
 			})
 			const savedUser = await newUser.save()
+
 			res.status(200).json(savedUser)
 		} catch (error) {
 			res.status(500).json(error)

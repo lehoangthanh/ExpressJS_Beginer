@@ -57,6 +57,8 @@
 		"@deep": "src/some/very/deep/directory/or/file",
 		"@app": "./app.js",
 		"@routes": "src/routes",
-		"@controllers": "src/controllers"
+		"@controllers": "src/controllers",
+		"@services": "src/services",
+		"@models": "src/models"
 	}
 }

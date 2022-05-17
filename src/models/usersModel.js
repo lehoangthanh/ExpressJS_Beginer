@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
 	email: {
 		type: String,
 	},
-	avartar: {
+	avatar: {
 		type: String,
 	},
 })

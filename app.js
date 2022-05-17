@@ -23,17 +23,15 @@ db.once('open', function callback() {
 
 const app = express()
 app.use(cors())
-
+app.use(cookieParser())
 const apiRouteName = '/v1/api'
 
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(`${apiRouteName}/devices`, deviceRouter)
 app.use(`${apiRouteName}/users`, userRouter)
-
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
 
 module.exports = app
