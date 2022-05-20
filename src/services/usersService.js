@@ -7,9 +7,7 @@ class UsersService {
 	 * @returns bool | string
 	 */
 	async uploadAvatar(file) {
-		if (file === undefined) {
-			return false
-		}
+		if (file === undefined) return false
 		if (!fs.existsSync(process.env.PATH_UPLOAD_AVATAR)) {
 			fs.mkdirSync(process.env.PATH_UPLOAD_AVATAR)
 		}

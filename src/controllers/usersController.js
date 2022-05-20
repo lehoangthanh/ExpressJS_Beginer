@@ -4,7 +4,10 @@ const UsersService = require('@services/usersService')
 const userController = {
 	addUser: async (req, res) => {
 		try {
-			const fileName = await UsersService.uploadAvatar(req.file)
+			let fileName = ''
+			if (req.file !== undefined) {
+				fileName = await UsersService.uploadAvatar(req.file)
+			}
 			const newUser = new User({
 				firstName: req.body.firstName,
 				lastName: req.body.lastName,
@@ -15,7 +18,6 @@ const userController = {
 				avatar: fileName,
 			})
 			const savedUser = await newUser.save()
-
 			res.status(200).json(savedUser)
 		} catch (error) {
 			res.status(500).json(error)
