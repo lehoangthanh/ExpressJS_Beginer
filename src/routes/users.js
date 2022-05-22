@@ -3,6 +3,7 @@ const multer = require('multer')
 const fs = require('fs')
 
 const userController = require('@controllers/usersController')
+const { parserErorResponse, ERROR_KEYS } = require('@libs/errors')
 
 const allowAvatarFileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif']
 const upload = multer({
@@ -21,16 +22,14 @@ router.post(
 		/* eslint no-unused-vars: 0 */
 		upload.fileFilter(req, file, (cb) => {
 			if (allowAvatarFileTypes.indexOf(file.mimetype) === -1) {
-				const errMess = `Only ${allowAvatarFileTypes.join()} format allowed!`
+				const error = {
+					code: ERROR_KEYS.CUS_0009,
+					keyValue: { file_error: file.originalname },
+				}
 				fs.unlinkSync(file.path)
-				res.status(422).json({
-					errors: [
-						{
-							file_error: errMess,
-						},
-					],
-					message: errMess,
-				})
+				res.status(422).json(parserErorResponse(error))
+			} else {
+				next()
 			}
 		})
 	},

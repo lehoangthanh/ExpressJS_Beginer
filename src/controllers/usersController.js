@@ -1,5 +1,6 @@
 const { User } = require('@models/usersModel')
 const UsersService = require('@services/usersService')
+const { parserErorResponse } = require('@libs/errors')
 
 const userController = {
 	addUser: async (req, res) => {
@@ -20,7 +21,7 @@ const userController = {
 			const savedUser = await newUser.save()
 			res.status(200).json(savedUser)
 		} catch (error) {
-			res.status(500).json(error)
+			res.status(500).json(parserErorResponse(error))
 		}
 	},
 	userList: async (req, res) => {

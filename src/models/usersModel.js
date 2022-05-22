@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+/* eslint no-useless-escape: 0 */
 const userSchema = new mongoose.Schema({
 	firstName: {
 		type: String,
@@ -20,6 +21,9 @@ const userSchema = new mongoose.Schema({
 	},
 	email: {
 		type: String,
+		required: true,
+		match: /.+\@.+\..+/,
+		unique: true,
 	},
 	avatar: {
 		type: String,
