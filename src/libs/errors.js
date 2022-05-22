@@ -15,24 +15,13 @@ const parserErorCodeToMessage = (code) => {
 }
 
 const parserErorResponse = (error) => {
-	let errMess = ''
-	let errField = '1'
-	let errObj = {
-		errors: [
-			{
-				[errField]: errMess,
-			},
-		],
-		message: errMess,
-	}
-
 	const { code, keyValue } = error
 	if (code === undefined || keyValue === undefined) {
-		return errObj
+		return error
 	}
-	errField = keyValue ?? Object.keys(keyValue)[0]
-	errMess = parserErorCodeToMessage(code)
-	errObj = {
+	const errField = keyValue ?? Object.keys(keyValue)[0]
+	const errMess = parserErorCodeToMessage(code)
+	const errObj = {
 		errors: [
 			{
 				[errField]: errMess,
