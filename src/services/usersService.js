@@ -12,9 +12,6 @@ class UsersService {
 			fs.mkdirSync(process.env.PATH_UPLOAD_AVATAR)
 		}
 		const fileName = `${file.filename}_${file.originalname}`
-		console.log(fileName)
-		console.log(file.path)
-		console.log(`${process.env.PATH_UPLOAD_AVATAR}${fileName}`)
 		fs.copyFileSync(
 			file.path,
 			`${process.env.PATH_UPLOAD_AVATAR}${fileName}`,

@@ -21,7 +21,6 @@ router.post(
 		}
 		/* eslint no-unused-vars: 0 */
 		upload.fileFilter(req, file, (cb) => {
-			console.log('aaaaaa', allowAvatarFileTypes.indexOf(file.mimetype) === -1)
 			if (allowAvatarFileTypes.indexOf(file.mimetype) === -1) {
 				const error = {
 					code: ERROR_KEYS.CUS_0009,
