@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-class UsersService {
+class BooksService {
 	/**
 	 *
 	 * @param {*} file
@@ -25,4 +25,4 @@ class UsersService {
 	}
 }
 
-module.exports = new UsersService()
+module.exports = new BooksService()

@@ -9,6 +9,7 @@ const userController = {
 			if (req.file !== undefined) {
 				fileName = await UsersService.uploadAvatar(req.file)
 			}
+			console.log('bbbbbbbb')
 			const newUser = new User({
 				firstName: req.body.firstName,
 				lastName: req.body.lastName,

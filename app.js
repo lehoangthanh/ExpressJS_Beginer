@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const deviceRouter = require('@routes/devices')
 const userRouter = require('@routes/users')
+const bookRouter = require('@routes/books')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
@@ -33,5 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(`${apiRouteName}/devices`, deviceRouter)
 app.use(`${apiRouteName}/users`, userRouter)
+app.use(`${apiRouteName}/books`, bookRouter)
 
 module.exports = app
