@@ -2,8 +2,7 @@ const router = require('express').Router()
 const multer = require('multer')
 const fs = require('fs')
 
-const userController = require('@controllers/usersController')
-const { parserErorResponse, ERROR_KEYS } = require('@libs/errors')
+const bookController = require('@controllers/booksController')
 
 const allowAvatarFileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif']
 const upload = multer({
@@ -13,7 +12,6 @@ const upload = multer({
 router.post(
 	'/',
 	upload.single('avatar'),
-	/* eslint consistent-return: 0 */
 	(req, res, next) => {
 		const { file } = req
 		if (file === undefined) {
@@ -22,27 +20,29 @@ router.post(
 		/* eslint no-unused-vars: 0 */
 		upload.fileFilter(req, file, (cb) => {
 			if (allowAvatarFileTypes.indexOf(file.mimetype) === -1) {
-				const error = {
-					code: ERROR_KEYS.CUS_0009,
-					keyValue: { file_error: file.originalname },
-				}
+				const errMess = `Only ${allowAvatarFileTypes.join()} format allowed!`
 				fs.unlinkSync(file.path)
-				res.status(422).json(parserErorResponse(error))
-			} else {
-				next()
+				res.status(422).json({
+					errors: [
+						{
+							file_error: errMess,
+						},
+					],
+					message: errMess,
+				})
 			}
 		})
 		return next()
 	},
-	userController.addUser
+	bookController.addBook
 )
 
-router.get('/', userController.userList)
+router.get('/', bookController.bookList)
 
-router.get('/:id', userController.userID)
+router.get('/:id', bookController.bookID)
 
-router.delete('/:id', userController.deleteUserID)
+router.delete('/:id', bookController.deleteBookID)
 
-router.put('/:id', userController.updateUserID)
+router.put('/:id', bookController.updateBookID)
 
 module.exports = router
